@@ -7,6 +7,11 @@ public struct FunctionCallingConfig: Codable {
 	/// Optional. A set of function names that, when provided, limits the functions the model will call.
 	/// This should only be set when the Mode is ANY or VALIDATED. Function names should match [FunctionDeclaration.name]. When set, model will predict a function call from only allowed function names.
 	public var allowedFunctionNames: [String]?
+	
+	public init(mode: Mode? = nil, allowedFunctionNames: [String]? = nil) {
+		self.mode = mode
+		self.allowedFunctionNames = allowedFunctionNames
+	}
 
 	/// Defines the execution behavior for function calling by defining the execution mode.
 	public enum Mode: String, Codable {

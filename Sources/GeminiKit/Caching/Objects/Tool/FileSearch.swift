@@ -9,4 +9,10 @@ public struct FileSearch: Codable {
 
 	/// Optional. The number of semantic retrieval chunks to retrieve.
 	public var topK: Int?
+	
+	public init(fileSearchStoreNames: [String], metadataFilter: String? = nil, topK: Int? = nil) {
+		self.fileSearchStoreNames = fileSearchStoreNames
+		self.metadataFilter = metadataFilter
+		self.topK = topK
+	}
 }

@@ -35,6 +35,24 @@ public struct FunctionDeclaration: Codable {
 	/// Optional. Describes the output from this function in JSON Schema format. The value specified by the schema is the response value of the function.
 	/// This field is mutually exclusive with `response`.
 	public var responseJsonSchema: [String: String]?
+	
+	public init(
+		name: String,
+		description: String,
+		behavior: Behavior? = nil,
+		parameters: Schema? = nil,
+		parametersJsonSchema: [String: String]? = nil,
+		response: Schema? = nil,
+		responseJsonSchema: [String: String]? = nil
+	) {
+		self.name = name
+		self.description = description
+		self.behavior = behavior
+		self.parameters = parameters
+		self.parametersJsonSchema = parametersJsonSchema
+		self.response = response
+		self.responseJsonSchema = responseJsonSchema
+	}
 
 	/// Defines the function behavior. Defaults to BLOCKING.
 	public enum Behavior: String, Codable {

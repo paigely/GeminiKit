@@ -6,4 +6,9 @@ public struct UrlMetadata: Codable {
 
 	/// Status of the url retrieval.
 	public var urlRetrievalStatus: UrlRetrievalStatus
+
+	public init(retrievedUrl: String, urlRetrievalStatus: UrlRetrievalStatus) {
+		self.retrievedUrl = retrievedUrl
+		self.urlRetrievalStatus = urlRetrievalStatus
+	}
 }

@@ -14,4 +14,11 @@ public struct CitationSource: Codable {
 	/// Optional. License for the GitHub project that is attributed as a source for segment.
 	/// License info is required for code citations.
 	public var license: String?
+	
+	public init(startIndex: Int? = nil, endIndex: Int? = nil, uri: String? = nil, license: String? = nil) {
+		self.startIndex = startIndex
+		self.endIndex = endIndex
+		self.uri = uri
+		self.license = license
+	}
 }

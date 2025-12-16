@@ -8,4 +8,9 @@ public struct Blob: Codable {
 	/// Raw bytes for media formats.
 	/// A base64-encoded string.
 	public var data: String
+	
+	public init(mimeType: String, data: String) {
+		self.mimeType = mimeType
+		self.data = data
+	}
 }

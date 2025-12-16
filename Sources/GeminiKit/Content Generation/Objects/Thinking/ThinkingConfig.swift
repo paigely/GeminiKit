@@ -10,4 +10,10 @@ public struct ThinkingConfig: Codable {
 	/// Optional. Controls the maximum depth of the model's internal reasoning process before it produces a response. If not specified, the default is HIGH. Recommended for Gemini 3 or later models.
 	/// Use with earlier models results in an error.
 	public var thinkingLevel: ThinkingLevel?
+	
+	public init(includeThoughts: Bool? = nil, thinkingBudget: Int? = nil, thinkingLevel: ThinkingLevel? = nil) {
+		self.includeThoughts = includeThoughts
+		self.thinkingBudget = thinkingBudget
+		self.thinkingLevel = thinkingLevel
+	}
 }

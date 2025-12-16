@@ -3,4 +3,8 @@ public struct CitationMetadata: Codable {
 
 	/// Citations to sources for a specific response.
 	public var citationSources: [CitationSource]
+
+	public init(citationSources: [CitationSource]) {
+		self.citationSources = citationSources
+	}
 }

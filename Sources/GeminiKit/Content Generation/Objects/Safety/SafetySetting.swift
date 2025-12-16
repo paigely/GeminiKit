@@ -7,4 +7,9 @@ public struct SafetySetting: Codable {
 
 	/// Required. Controls the probability threshold at which harm is blocked.
 	public var threshold: HarmBlockThreshold
+	
+	public init(category: HarmCategory = .unspecified, threshold: HarmBlockThreshold = .unspecified) {
+		self.category = category
+		self.threshold = threshold
+	}
 }

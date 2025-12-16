@@ -10,4 +10,10 @@ public struct SafetyRating: Codable {
 
 	/// Was this content blocked because of this rating?
 	public var blocked: Bool
+	
+	public init(category: HarmCategory = .unspecified, probability: HarmProbability = .unspecified, blocked: Bool = false) {
+		self.category = category
+		self.probability = probability
+		self.blocked = blocked
+	}
 }

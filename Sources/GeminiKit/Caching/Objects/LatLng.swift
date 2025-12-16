@@ -6,4 +6,9 @@ public struct LatLng: Codable {
 
 	/// The longitude in degrees. It must be in the range [-180.0, +180.0].
 	public var longitude: Int
+	
+	public init(latitude: Int, longitude: Int) {
+		self.latitude = latitude
+		self.longitude = longitude
+	}
 }

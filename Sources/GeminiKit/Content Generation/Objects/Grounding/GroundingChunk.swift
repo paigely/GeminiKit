@@ -9,6 +9,12 @@ public struct GroundingChunk: Codable {
 
 	/// Optional. Grounding chunk from Google Maps.
 	public var maps: Maps?
+	
+	public init(web: Web? = nil, retrievedContext: RetrievedContext? = nil, maps: Maps? = nil) {
+		self.web = web
+		self.retrievedContext = retrievedContext
+		self.maps = maps
+	}
 
 	/// Chunk from the web.
 	public struct Web: Codable {
@@ -18,6 +24,11 @@ public struct GroundingChunk: Codable {
 
 		/// Title of the chunk.
 		public var title: String
+		
+		public init(uri: String, title: String) {
+			self.uri = uri
+			self.title = title
+		}
 	}
 
 	/// Chunk from context retrieved by the file search tool.
@@ -34,6 +45,13 @@ public struct GroundingChunk: Codable {
 
 		/// Optional. Name of the FileSearchStore containing the document. Example: fileSearchStores/123
 		public var fileSearchStore: String?
+		
+		public init(uri: String? = nil, title: String? = nil, text: String? = nil, fileSearchStore: String? = nil) {
+			self.uri = uri
+			self.title = title
+			self.text = text
+			self.fileSearchStore = fileSearchStore
+		}
 	}
 
 	/// A grounding chunk from Google Maps. A Maps chunk corresponds to a single place.
@@ -53,12 +71,24 @@ public struct GroundingChunk: Codable {
 
 		/// Sources that provide answers about the features of a given place in Google Maps.
 		public var placeAnswerSources: PlaceAnswerSources
+		
+		public init(uri: String, title: String, text: String, placeId: String, placeAnswerSources: PlaceAnswerSources) {
+			self.uri = uri
+			self.title = title
+			self.text = text
+			self.placeId = placeId
+			self.placeAnswerSources = placeAnswerSources
+		}
 
 		/// Collection of sources that provide answers about the features of a given place in Google Maps. Each PlaceAnswerSources message corresponds to a specific place in Google Maps. The Google Maps tool used these sources in order to answer questions about features of the place (e.g: "does Bar Foo have Wifi" or "is Foo Bar wheelchair accessible?"). Currently we only support review snippets as sources.
 		public struct PlaceAnswerSources: Codable {
 
 			/// Snippets of reviews that are used to generate answers about the features of a given place in Google Maps.
 			public var reviewSnippets: [ReviewSnippet]
+			
+			public init(reviewSnippets: [ReviewSnippet]) {
+				self.reviewSnippets = reviewSnippets
+			}
 
 			/// Encapsulates a snippet of a user review that answers a question about the features of a specific place in Google Maps.
 			public struct ReviewSnippet: Codable {
@@ -71,6 +101,12 @@ public struct GroundingChunk: Codable {
 
 				/// Title of the review.
 				public var title: String
+				
+				public init(reviewId: String, googleMapsUri: String, title: String) {
+					self.reviewId = reviewId
+					self.googleMapsUri = googleMapsUri
+					self.title = title
+				}
 			}
 		}
 	}

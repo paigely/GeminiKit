@@ -6,4 +6,9 @@ public struct RetrievalConfig: Codable {
 
 	/// Optional. The language code of the user. Language code for content. Use language tags defined by BCP47.
 	public var languageCode: String?
+	
+	public init(latLng: LatLng? = nil, languageCode: String? = nil) {
+		self.latLng = latLng
+		self.languageCode = languageCode
+	}
 }

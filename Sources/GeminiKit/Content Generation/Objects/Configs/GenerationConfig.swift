@@ -103,6 +103,50 @@ public struct GenerationConfig: Codable {
 
 	/// Optional. If specified, the media resolution specified will be used.
 	public var mediaResolution: MediaResolution?
+	
+	public init(
+		stopSequences: [String]? = nil,
+		responseMimeType: String? = nil,
+		responseSchema: Schema? = nil,
+		_responseJsonSchema: [String: String]? = nil,
+		responseJsonSchema: [String: String]? = nil,
+		responseModalities: [Modality]? = nil,
+		candidateCount: Int? = nil,
+		maxOutputTokens: Int? = nil,
+		temperature: Float? = nil,
+		topP: Float? = nil,
+		topK: Int? = nil,
+		seed: Int? = nil,
+		presencePenalty: Float? = nil,
+		frequencyPenalty: Float? = nil,
+		responseLogprobs: Bool? = nil,
+		logprobs: Int? = nil,
+		enableEnhancedCivicAnswers: Bool? = nil,
+		speechConfig: SpeechConfig? = nil,
+		thinkingConfig: ThinkingConfig? = nil,
+		mediaResolution: MediaResolution? = nil
+	) {
+		self.stopSequences = stopSequences
+		self.responseMimeType = responseMimeType
+		self.responseSchema = responseSchema
+		self._responseJsonSchema = _responseJsonSchema
+		self.responseJsonSchema = responseJsonSchema
+		self.responseModalities = responseModalities
+		self.candidateCount = candidateCount
+		self.maxOutputTokens = maxOutputTokens
+		self.temperature = temperature
+		self.topP = topP
+		self.topK = topK
+		self.seed = seed
+		self.presencePenalty = presencePenalty
+		self.frequencyPenalty = frequencyPenalty
+		self.responseLogprobs = responseLogprobs
+		self.logprobs = logprobs
+		self.enableEnhancedCivicAnswers = enableEnhancedCivicAnswers
+		self.speechConfig = speechConfig
+		self.thinkingConfig = thinkingConfig
+		self.mediaResolution = mediaResolution
+	}
 
 	/// Supported modalities of the response.
 	public enum Modality: String, Codable {

@@ -6,6 +6,11 @@ public struct GroundingAttribution: Codable {
 
 	/// Grounding source content that makes up this attribution.
 	public var content: Content
+	
+	public init(sourceId: AttributionSourceId, content: Content) {
+		self.sourceId = sourceId
+		self.content = content
+	}
 
 	public struct AttributionSourceId: Codable {
 		/// Identifier for an inline passage.
@@ -13,6 +18,11 @@ public struct GroundingAttribution: Codable {
 
 		/// Identifier for a Chunk fetched via Semantic Retriever.
 		public var semanticRetrieverChunk: SemanticRetrieverChunk
+		
+		public init(groundingPassage: GroundingPassageId, semanticRetrieverChunk: SemanticRetrieverChunk) {
+			self.groundingPassage = groundingPassage
+			self.semanticRetrieverChunk = semanticRetrieverChunk
+		}
 
 		/// Identifier for a part within a GroundingPassage.
 		public struct GroundingPassageId: Codable {
@@ -22,6 +32,11 @@ public struct GroundingAttribution: Codable {
 
 			/// Output only. Index of the part within the GenerateAnswerRequest's GroundingPassage.content.
 			public var partIndex: Int
+			
+			public init(passageId: String, partIndex: Int) {
+				self.passageId = passageId
+				self.partIndex = partIndex
+			}
 		}
 
 		/// Identifier for a Chunk retrieved via Semantic Retriever specified in the GenerateAnswerRequest using SemanticRetrieverConfig.
@@ -32,6 +47,11 @@ public struct GroundingAttribution: Codable {
 
 			/// Output only. Name of the Chunk containing the attributed text. Example: corpora/123/documents/abc/chunks/xyz
 			public var chunk: String
+			
+			public init(source: String, chunk: String) {
+				self.source = source
+				self.chunk = chunk
+			}
 		}
 	}
 }

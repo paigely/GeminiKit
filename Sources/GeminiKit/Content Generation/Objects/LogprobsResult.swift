@@ -10,6 +10,16 @@ public struct LogprobsResult: Codable {
 	/// Sum of log probabilities for all tokens.
 	public var logProbabilitySum: Double
 
+	public init(
+		topCandidates: [TopCandidates],
+		chosenCandidates: [Candidate],
+		logProbabilitySum: Double = 0
+	) {
+		self.topCandidates = topCandidates
+		self.chosenCandidates = chosenCandidates
+		self.logProbabilitySum = logProbabilitySum
+	}
+
 	/// Candidates with top log probabilities at each decoding step.
 	public struct TopCandidates: Codable {
 
@@ -28,5 +38,11 @@ public struct LogprobsResult: Codable {
 
 		/// The candidate's log probability.
 		public var logProbability: Double
+
+		public init(token: String, tokenId: Int, logProbability: Double) {
+			self.token = token
+			self.tokenId = tokenId
+			self.logProbability = logProbability
+		}
 	}
 }

@@ -6,4 +6,12 @@ public struct ToolConfig: Codable {
 
 	/// Optional. Retrieval config.
 	public var retrievalConfig: RetrievalConfig?
+
+	public init(
+		functionCallingConfig: FunctionCallingConfig? = nil,
+		retrievalConfig: RetrievalConfig? = nil
+	) {
+		self.functionCallingConfig = functionCallingConfig
+		self.retrievalConfig = retrievalConfig
+	}
 }

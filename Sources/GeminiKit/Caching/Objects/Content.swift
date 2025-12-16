@@ -8,6 +8,11 @@ public struct Content: Codable {
 	/// Optional. The producer of the content. Must be either 'user' or 'model'.
 	/// Useful to set for multi-turn conversations, otherwise can be left blank or unset.
 	public var role: Role?
+	
+	public init(parts: [Part], role: Role? = nil) {
+		self.parts = parts
+		self.role = role
+	}
 
 	public enum Role: String, Codable {
 		case user, model

@@ -6,6 +6,11 @@ public struct DynamicRetrievalConfig: Codable {
 
 	/// The threshold to be used in dynamic retrieval. If not set, a system default value is used.
 	public var dynamicThreshold: Float?
+	
+	public init(mode: Mode, dynamicThreshold: Float? = nil) {
+		self.mode = mode
+		self.dynamicThreshold = dynamicThreshold
+	}
 
 	/// The mode of the predictor to be used in dynamic retrieval.
 	public enum Mode: String, Codable {

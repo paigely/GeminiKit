@@ -9,6 +9,12 @@ public struct GroundingSupport: Codable {
 
 	/// Segment of the content this support belongs to.
 	public var segment: Segment
+	
+	public init(groundingChunkIndices: [Int], confidenceScores: [Float], segment: Segment) {
+		self.groundingChunkIndices = groundingChunkIndices
+		self.confidenceScores = confidenceScores
+		self.segment = segment
+	}
 
 	/// Segment of the content.
 	public struct Segment: Codable {
@@ -24,5 +30,12 @@ public struct GroundingSupport: Codable {
 
 		/// Output only. The text corresponding to the segment from the response.
 		public var text: String
+		
+		public init(partIndex: Int = 0, startIndex: Int = 0, endIndex: Int = 0, text: String) {
+			self.partIndex = partIndex
+			self.startIndex = startIndex
+			self.endIndex = endIndex
+			self.text = text
+		}
 	}
 }

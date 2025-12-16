@@ -16,6 +16,20 @@ public struct GenerateContentResponse: Codable {
 
 	/// Output only. responseId is used to identify each response.
 	public var responseId: String
+	
+	public init(
+		candidates: [Candidate],
+		promptFeedback: PromptFeedback,
+		usageMetadata: UsageMetadata,
+		modelVersion: String,
+		responseId: String
+	) {
+		self.candidates = candidates
+		self.promptFeedback = promptFeedback
+		self.usageMetadata = usageMetadata
+		self.modelVersion = modelVersion
+		self.responseId = responseId
+	}
 
 	/// A set of the feedback metadata the prompt specified in `GenerateContentRequest.content`.
 	public struct PromptFeedback: Codable {
@@ -25,6 +39,11 @@ public struct GenerateContentResponse: Codable {
 
 		/// Ratings for safety of the prompt. There is at most one rating per category.
 		public var safetyRatings: [SafetyRating]
+		
+		public init(blockReason: BlockReason? = nil, safetyRatings: [SafetyRating]) {
+			self.blockReason = blockReason
+			self.safetyRatings = safetyRatings
+		}
 
 		/// Specifies the reason why the prompt was blocked.
 		public enum BlockReason: String, Codable {
@@ -81,6 +100,30 @@ public struct GenerateContentResponse: Codable {
 
 		/// Output only. List of modalities that were processed for tool-use request inputs.
 		public var toolUsePromptTokensDetails: [ModalityTokenCount]
+		
+		public init(
+			promptTokenCount: Int = 0,
+			cachedContentTokenCount: Int = 0,
+			candidatesTokenCount: Int = 0,
+			toolUsePromptTokenCount: Int = 0,
+			thoughtsTokenCount: Int = 0,
+			totalTokenCount: Int = 0,
+			promptTokensDetails: [ModalityTokenCount],
+			cacheTokensDetails: [ModalityTokenCount],
+			candidatesTokensDetails: [ModalityTokenCount],
+			toolUsePromptTokensDetails: [ModalityTokenCount],
+		) {
+			self.promptTokenCount = promptTokenCount
+			self.cachedContentTokenCount = cachedContentTokenCount
+			self.candidatesTokenCount = candidatesTokenCount
+			self.toolUsePromptTokenCount = toolUsePromptTokenCount
+			self.thoughtsTokenCount = thoughtsTokenCount
+			self.totalTokenCount = totalTokenCount
+			self.promptTokensDetails = promptTokensDetails
+			self.cacheTokensDetails = cacheTokensDetails
+			self.candidatesTokensDetails = candidatesTokensDetails
+			self.toolUsePromptTokensDetails = toolUsePromptTokensDetails
+		}
 
 		/// Represents token counting info for a single modality.
 		public struct ModalityTokenCount: Codable {

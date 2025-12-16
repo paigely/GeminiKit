@@ -41,6 +41,34 @@ public struct Candidate: Codable {
 
 	/// Optional. Output only. Details the reason why the model stopped generating tokens. This is populated only when `finishReason` is set.
 	public var finishMessage: String?
+	
+	public init(
+		content: Content,
+		finishReason: FinishReason? = nil,
+		safetyRatings: [SafetyRating],
+		citationMetadata: CitationMetadata,
+		tokenCount: Int = 0,
+		groundingAttributions: [GroundingAttribution],
+		groundingMetadata: GroundingMetadata? = nil,
+		avgLogprobs: Double = 0,
+		logprobsResult: LogprobsResult,
+		urlContextMetadata: UrlContextMetadata,
+		index: Int = 0,
+		finishMessage: String? = nil
+	) {
+		self.content = content
+		self.finishReason = finishReason
+		self.safetyRatings = safetyRatings
+		self.citationMetadata = citationMetadata
+		self.tokenCount = tokenCount
+		self.groundingAttributions = groundingAttributions
+		self.groundingMetadata = groundingMetadata
+		self.avgLogprobs = avgLogprobs
+		self.logprobsResult = logprobsResult
+		self.urlContextMetadata = urlContextMetadata
+		self.index = index
+		self.finishMessage = finishMessage
+	}
 
 	/// Defines the reason why the model stopped generating tokens.
 	public enum FinishReason: String, Codable {

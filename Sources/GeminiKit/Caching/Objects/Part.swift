@@ -8,4 +8,9 @@ public struct Part: Codable {
 
 	/// Inline media bytes.
 	public var inlineData: Blob?
+	
+	public init(text: String? = nil, inlineData: Blob? = nil) {
+		self.text = text
+		self.inlineData = inlineData
+	}
 }

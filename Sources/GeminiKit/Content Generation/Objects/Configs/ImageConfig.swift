@@ -7,4 +7,9 @@ public struct ImageConfig: Codable {
 
 	/// Optional. Specifies the size of generated images. Supported values are 1K, 2K, 4K. If not specified, the model will use default value 1K.
 	public var imageSize: String?
+	
+	public init(aspectRatio: String? = nil, imageSize: String? = nil) {
+		self.aspectRatio = aspectRatio
+		self.imageSize = imageSize
+	}
 }

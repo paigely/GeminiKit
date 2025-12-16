@@ -61,4 +61,48 @@ public struct Schema: Codable {
 
 	/// Optional. Maximum value of the Type.INTEGER and Type.NUMBER
 	public var maximum: Double?
+
+	public init(
+		type: SchemaType,
+		format: String? = nil,
+		title: String? = nil,
+		description: String? = nil,
+		nullable: Bool? = nil,
+		`enum`: [String]? = nil,
+		maxItems: String? = nil,
+		minItems: String? = nil,
+		properties: [String: Schema]? = nil,
+		required: [String]? = nil,
+		minProperties: String? = nil,
+		maxProperties: String? = nil,
+		minLength: String? = nil,
+		maxLength: String? = nil,
+		pattern: String? = nil,
+		anyOf: [Schema]? = nil,
+		propertyOrdering: [String]? = nil,
+		items: [String: String]? = nil,
+		minimum: Double? = nil,
+		maximum: Double? = nil
+	) {
+		self.type = type
+		self.format = format
+		self.title = title
+		self.description = description
+		self.nullable = nullable
+		self.`enum` = `enum`
+		self.maxItems = maxItems
+		self.minItems = minItems
+		self.properties = properties
+		self.required = required
+		self.minProperties = minProperties
+		self.maxProperties = maxProperties
+		self.minLength = minLength
+		self.maxLength = maxLength
+		self.pattern = pattern
+		self.anyOf = anyOf
+		self.propertyOrdering = propertyOrdering
+		self.items = items
+		self.minimum = minimum
+		self.maximum = maximum
+	}
 }

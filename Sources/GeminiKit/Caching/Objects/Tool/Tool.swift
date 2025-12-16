@@ -27,4 +27,24 @@ public struct Tool: Codable {
 
 	/// Optional. Tool that allows grounding the model's response with geospatial context related to the user's query.
 	public var googleMaps: GoogleMaps?
+
+	public init(
+		functionDeclarations: [FunctionDeclaration]? = nil,
+		googleSearchRetrieval: GoogleSearchRetrieval? = nil,
+		codeExecution: CodeExecution? = nil,
+		googleSearch: GoogleSearch? = nil,
+		computerUse: ComputerUse? = nil,
+		urlContext: UrlContext? = nil,
+		fileSearch: FileSearch? = nil,
+		googleMaps: GoogleMaps? = nil
+	) {
+		self.functionDeclarations = functionDeclarations
+		self.googleSearchRetrieval = googleSearchRetrieval
+		self.codeExecution = codeExecution
+		self.googleSearch = googleSearch
+		self.computerUse = computerUse
+		self.urlContext = urlContext
+		self.fileSearch = fileSearch
+		self.googleMaps = googleMaps
+	}
 }
