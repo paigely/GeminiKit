@@ -2,7 +2,7 @@
 public struct FileSearch: Codable {
 
 	/// Required. The names of the fileSearchStores to retrieve from. Example: fileSearchStores/my-file-search-store-123
-	public var fileSearchStoreNames: [String]
+	public var fileSearchStoreNames: [String]?
 
 	/// Optional. Metadata filter to apply to the semantic retrieval documents and chunks.
 	public var metadataFilter: String?
@@ -10,7 +10,7 @@ public struct FileSearch: Codable {
 	/// Optional. The number of semantic retrieval chunks to retrieve.
 	public var topK: Int?
 	
-	public init(fileSearchStoreNames: [String], metadataFilter: String? = nil, topK: Int? = nil) {
+	public init(fileSearchStoreNames: [String]? = nil, metadataFilter: String? = nil, topK: Int? = nil) {
 		self.fileSearchStoreNames = fileSearchStoreNames
 		self.metadataFilter = metadataFilter
 		self.topK = topK

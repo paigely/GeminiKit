@@ -3,7 +3,7 @@ public struct GenerateContentRequest: Codable {
 
 	/// Required. The content of the current conversation with the model.
 	/// For single-turn queries, this is a single instance. For multi-turn queries like chat, this is a repeated field that contains the conversation history and the latest request.
-	public var contents: [Content]
+	public var contents: [Content]?
 
 	/// Optional. A list of `Tools` the `Model` may use to generate the next response.
 	/// A `Tool` is a piece of code that enables the system to interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the `Model`. Supported `Tool`s are `Function` and `codeExecution`. Refer to the Function calling and the Code execution guides to learn more.
@@ -26,7 +26,7 @@ public struct GenerateContentRequest: Codable {
 	public var cachedContent: String?
 	
 	public init(
-		contents: [Content],
+		contents: [Content]? = nil,
 		tools: [Tool]? = nil,
 		toolConfig: ToolConfig? = nil,
 		safetySettings: [SafetySetting]? = nil,

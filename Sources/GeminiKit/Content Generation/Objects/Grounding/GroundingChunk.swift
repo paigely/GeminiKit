@@ -20,12 +20,12 @@ public struct GroundingChunk: Codable {
 	public struct Web: Codable {
 
 		/// URI reference of the chunk.
-		public var uri: String
+		public var uri: String?
 
 		/// Title of the chunk.
-		public var title: String
+		public var title: String?
 		
-		public init(uri: String, title: String) {
+		public init(uri: String? = nil, title: String? = nil) {
 			self.uri = uri
 			self.title = title
 		}
@@ -58,21 +58,21 @@ public struct GroundingChunk: Codable {
 	public struct Maps: Codable {
 
 		/// URI reference of the place.
-		public var uri: String
+		public var uri: String?
 
 		/// Title of the place.
-		public var title: String
+		public var title: String?
 
 		/// Text description of the place answer.
-		public var text: String
+		public var text: String?
 
 		/// This ID of the place, in places/{placeId} format. A user can use this ID to look up that place.
-		public var placeId: String
+		public var placeId: String?
 
 		/// Sources that provide answers about the features of a given place in Google Maps.
-		public var placeAnswerSources: PlaceAnswerSources
+		public var placeAnswerSources: PlaceAnswerSources?
 		
-		public init(uri: String, title: String, text: String, placeId: String, placeAnswerSources: PlaceAnswerSources) {
+		public init(uri: String? = nil, title: String? = nil, text: String? = nil, placeId: String? = nil, placeAnswerSources: PlaceAnswerSources? = nil) {
 			self.uri = uri
 			self.title = title
 			self.text = text
@@ -84,9 +84,9 @@ public struct GroundingChunk: Codable {
 		public struct PlaceAnswerSources: Codable {
 
 			/// Snippets of reviews that are used to generate answers about the features of a given place in Google Maps.
-			public var reviewSnippets: [ReviewSnippet]
+			public var reviewSnippets: [ReviewSnippet]?
 			
-			public init(reviewSnippets: [ReviewSnippet]) {
+			public init(reviewSnippets: [ReviewSnippet]? = nil) {
 				self.reviewSnippets = reviewSnippets
 			}
 
@@ -94,15 +94,15 @@ public struct GroundingChunk: Codable {
 			public struct ReviewSnippet: Codable {
 
 				/// The ID of the review snippet.
-				public var reviewId: String
+				public var reviewId: String?
 
 				/// A link that corresponds to the user review on Google Maps.
-				public var googleMapsUri: String
+				public var googleMapsUri: String?
 
 				/// Title of the review.
-				public var title: String
+				public var title: String?
 				
-				public init(reviewId: String, googleMapsUri: String, title: String) {
+				public init(reviewId: String? = nil, googleMapsUri: String? = nil, title: String? = nil) {
 					self.reviewId = reviewId
 					self.googleMapsUri = googleMapsUri
 					self.title = title

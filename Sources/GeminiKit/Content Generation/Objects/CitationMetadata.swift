@@ -2,9 +2,9 @@
 public struct CitationMetadata: Codable {
 
 	/// Citations to sources for a specific response.
-	public var citationSources: [CitationSource]
+	public var citationSources: [CitationSource]?
 
-	public init(citationSources: [CitationSource]) {
+	public init(citationSources: [CitationSource]? = nil) {
 		self.citationSources = citationSources
 	}
 }

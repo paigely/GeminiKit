@@ -3,13 +3,13 @@
 public struct Content: Codable {
 
 	/// Ordered `Parts` that constitute a single message. Parts may have different MIME types.
-	public var parts: [Part]
+	public var parts: [Part]?
 
 	/// Optional. The producer of the content. Must be either 'user' or 'model'.
 	/// Useful to set for multi-turn conversations, otherwise can be left blank or unset.
 	public var role: Role?
 	
-	public init(parts: [Part], role: Role? = nil) {
+	public init(parts: [Part]? = nil, role: Role? = nil) {
 		self.parts = parts
 		self.role = role
 	}

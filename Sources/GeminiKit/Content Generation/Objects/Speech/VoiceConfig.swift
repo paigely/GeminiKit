@@ -2,9 +2,9 @@
 public struct VoiceConfig: Codable {
 
 	/// The configuration for the prebuilt voice to use.
-	public var prebuiltVoiceConfig: PrebuiltVoiceConfig
+	public var prebuiltVoiceConfig: PrebuiltVoiceConfig?
 	
-	public init(prebuiltVoiceConfig: PrebuiltVoiceConfig) {
+	public init(prebuiltVoiceConfig: PrebuiltVoiceConfig? = nil) {
 		self.prebuiltVoiceConfig = prebuiltVoiceConfig
 	}
 
@@ -12,6 +12,10 @@ public struct VoiceConfig: Codable {
 	public struct PrebuiltVoiceConfig: Codable {
 
 		/// The name of the preset voice to use.
-		public var voiceName: String
+		public var voiceName: String?
+		
+		public init(voiceName: String?) {
+			self.voiceName = voiceName
+		}
 	}
 }

@@ -3,26 +3,26 @@
 public struct GenerateContentResponse: Codable {
 
 	/// Candidate responses from the model.
-	public var candidates: [Candidate]
+	public var candidates: [Candidate]?
 
 	/// Returns the prompt's feedback related to the content filters.
-	public var promptFeedback: PromptFeedback
+	public var promptFeedback: PromptFeedback?
 
 	/// Output only. Metadata on the generation requests' token usage.
-	public var usageMetadata: UsageMetadata
+	public var usageMetadata: UsageMetadata?
 
 	/// Output only. The model version used to generate the response.
-	public var modelVersion: String
+	public var modelVersion: String?
 
 	/// Output only. responseId is used to identify each response.
-	public var responseId: String
+	public var responseId: String?
 	
 	public init(
-		candidates: [Candidate],
-		promptFeedback: PromptFeedback,
-		usageMetadata: UsageMetadata,
-		modelVersion: String,
-		responseId: String
+		candidates: [Candidate]? = nil,
+		promptFeedback: PromptFeedback? = nil,
+		usageMetadata: UsageMetadata? = nil,
+		modelVersion: String? = nil,
+		responseId: String? = nil
 	) {
 		self.candidates = candidates
 		self.promptFeedback = promptFeedback
@@ -38,9 +38,9 @@ public struct GenerateContentResponse: Codable {
 		public var blockReason: BlockReason?
 
 		/// Ratings for safety of the prompt. There is at most one rating per category.
-		public var safetyRatings: [SafetyRating]
+		public var safetyRatings: [SafetyRating]?
 		
-		public init(blockReason: BlockReason? = nil, safetyRatings: [SafetyRating]) {
+		public init(blockReason: BlockReason? = nil, safetyRatings: [SafetyRating]? = nil) {
 			self.blockReason = blockReason
 			self.safetyRatings = safetyRatings
 		}
@@ -72,46 +72,46 @@ public struct GenerateContentResponse: Codable {
 	public struct UsageMetadata: Codable {
 
 		/// Number of tokens in the prompt. When `cachedContent` is set, this is still the total effective prompt size meaning this includes the number of tokens in the cached content.
-		public var promptTokenCount: Int
+		public var promptTokenCount: Int?
 
 		/// Number of tokens in the cached part of the prompt (the cached content)
-		public var cachedContentTokenCount: Int
+		public var cachedContentTokenCount: Int?
 
 		/// Total number of tokens across all the generated response candidates.
-		public var candidatesTokenCount: Int
+		public var candidatesTokenCount: Int?
 
 		/// Output only. Number of tokens present in tool-use prompt(s).
-		public var toolUsePromptTokenCount: Int
+		public var toolUsePromptTokenCount: Int?
 
 		/// Output only. Number of tokens of thoughts for thinking models.
-		public var thoughtsTokenCount: Int
+		public var thoughtsTokenCount: Int?
 
 		/// Total token count for the generation request (prompt + response candidates).
-		public var totalTokenCount: Int
+		public var totalTokenCount: Int?
 
 		/// Output only. List of modalities that were processed in the request input.
-		public var promptTokensDetails: [ModalityTokenCount]
+		public var promptTokensDetails: [ModalityTokenCount]?
 
 		/// Output only. List of modalities of the cached content in the request input.
-		public var cacheTokensDetails: [ModalityTokenCount]
+		public var cacheTokensDetails: [ModalityTokenCount]?
 
 		/// Output only. List of modalities that were returned in the response.
-		public var candidatesTokensDetails: [ModalityTokenCount]
+		public var candidatesTokensDetails: [ModalityTokenCount]?
 
 		/// Output only. List of modalities that were processed for tool-use request inputs.
-		public var toolUsePromptTokensDetails: [ModalityTokenCount]
+		public var toolUsePromptTokensDetails: [ModalityTokenCount]?
 		
 		public init(
-			promptTokenCount: Int = 0,
-			cachedContentTokenCount: Int = 0,
-			candidatesTokenCount: Int = 0,
-			toolUsePromptTokenCount: Int = 0,
-			thoughtsTokenCount: Int = 0,
-			totalTokenCount: Int = 0,
-			promptTokensDetails: [ModalityTokenCount],
-			cacheTokensDetails: [ModalityTokenCount],
-			candidatesTokensDetails: [ModalityTokenCount],
-			toolUsePromptTokensDetails: [ModalityTokenCount],
+			promptTokenCount: Int? = nil,
+			cachedContentTokenCount: Int? = nil,
+			candidatesTokenCount: Int? = nil,
+			toolUsePromptTokenCount: Int? = nil,
+			thoughtsTokenCount: Int? = nil,
+			totalTokenCount: Int? = nil,
+			promptTokensDetails: [ModalityTokenCount]? = nil,
+			cacheTokensDetails: [ModalityTokenCount]? = nil,
+			candidatesTokensDetails: [ModalityTokenCount]? = nil,
+			toolUsePromptTokensDetails: [ModalityTokenCount]? = nil
 		) {
 			self.promptTokenCount = promptTokenCount
 			self.cachedContentTokenCount = cachedContentTokenCount
@@ -129,10 +129,15 @@ public struct GenerateContentResponse: Codable {
 		public struct ModalityTokenCount: Codable {
 
 			/// The modality associated with this token count.
-			public var modality: Modality
+			public var modality: Modality?
 
 			/// Number of tokens.
-			public var tokenCount: Int
+			public var tokenCount: Int?
+			
+			public init(modality: Modality? = nil, tokenCount: Int? = nil) {
+				self.modality = modality
+				self.tokenCount = tokenCount
+			}
 
 			/// Content Part modality
 			public enum Modality: String, Codable {

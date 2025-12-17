@@ -2,10 +2,10 @@
 public struct FunctionDeclaration: Codable {
 
 	/// Required. The name of the function. Must be a-z, A-Z, 0-9, or contain underscores, colons, dots, and dashes, with a maximum length of 64.
-	public var name: String
+	public var name: String?
 
 	/// Required. A brief description of the function.
-	public var description: String
+	public var description: String?
 
 	/// Optional. Specifies the function Behavior. Currently only supported by the BidiGenerateContent method.
 	public var behavior: Behavior?
@@ -37,8 +37,8 @@ public struct FunctionDeclaration: Codable {
 	public var responseJsonSchema: [String: String]?
 	
 	public init(
-		name: String,
-		description: String,
+		name: String? = nil,
+		description: String? = nil,
 		behavior: Behavior? = nil,
 		parameters: Schema? = nil,
 		parametersJsonSchema: [String: String]? = nil,

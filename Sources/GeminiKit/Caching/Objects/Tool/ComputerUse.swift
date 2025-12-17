@@ -2,9 +2,9 @@
 public struct ComputerUse: Codable {
 
 	/// Required. The environment being operated.
-	public var environment: Environment
+	public var environment: Environment?
 	
-	public init(environment: Environment) {
+	public init(environment: Environment? = nil) {
 		self.environment = environment
 	}
 }

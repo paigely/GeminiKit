@@ -2,7 +2,7 @@
 public struct Schema: Codable {
 
 	/// Required. Data type.
-	public var type: SchemaType
+	public var type: SchemaType?
 
 	/// Optional. The format of the data. Any value is allowed, but most do not trigger any special functionality.
 	public var format: String?
@@ -63,7 +63,7 @@ public struct Schema: Codable {
 	public var maximum: Double?
 
 	public init(
-		type: SchemaType,
+		type: SchemaType? = nil,
 		format: String? = nil,
 		title: String? = nil,
 		description: String? = nil,

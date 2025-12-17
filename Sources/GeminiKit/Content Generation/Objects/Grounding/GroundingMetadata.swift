@@ -2,29 +2,29 @@
 public struct GroundingMetadata: Codable {
 
 	/// List of supporting references retrieved from specified grounding source.
-	public var groundingChunks: [GroundingChunk]
+	public var groundingChunks: [GroundingChunk]?
 
 	/// List of grounding support.
-	public var groundingSupports: [GroundingSupport]
+	public var groundingSupports: [GroundingSupport]?
 
 	/// Web search queries for the following-up web search.
-	public var webSearchQueries: [String]
+	public var webSearchQueries: [String]?
 
 	/// Optional. Google search entry for the following-up web searches.
 	public var searchEntryPoint: SearchEntryPoint?
 
 	/// Metadata related to retrieval in the grounding flow.
-	public var retrievalMetadata: RetrievalMetadata
+	public var retrievalMetadata: RetrievalMetadata?
 
 	/// Optional. Resource name of the Google Maps widget context token that can be used with the PlacesContextElement widget in order to render contextual data. Only populated in the case that grounding with Google Maps is enabled.
 	public var googleMapsWidgetContextToken: String?
 	
 	public init(
-		groundingChunks: [GroundingChunk],
-		groundingSupports: [GroundingSupport],
-		webSearchQueries: [String],
+		groundingChunks: [GroundingChunk]? = nil,
+		groundingSupports: [GroundingSupport]? = nil,
+		webSearchQueries: [String]? = nil,
 		searchEntryPoint: SearchEntryPoint? = nil,
-		retrievalMetadata: RetrievalMetadata,
+		retrievalMetadata: RetrievalMetadata? = nil,
 		googleMapsWidgetContextToken: String? = nil
 	) {
 		self.groundingChunks = groundingChunks

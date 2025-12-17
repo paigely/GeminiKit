@@ -3,15 +3,15 @@
 public struct SafetyRating: Codable {
 
 	/// Required. The category for this rating.
-	public var category: HarmCategory
+	public var category: HarmCategory?
 
 	/// Required. The probability of harm for this content.
-	public var probability: HarmProbability
+	public var probability: HarmProbability?
 
 	/// Was this content blocked because of this rating?
-	public var blocked: Bool
+	public var blocked: Bool?
 	
-	public init(category: HarmCategory = .unspecified, probability: HarmProbability = .unspecified, blocked: Bool = false) {
+	public init(category: HarmCategory? = nil, probability: HarmProbability? = nil, blocked: Bool? = nil) {
 		self.category = category
 		self.probability = probability
 		self.blocked = blocked

@@ -10,34 +10,34 @@ public struct Candidate: Codable {
 
 	/// List of ratings for the safety of a response candidate.
 	/// There is at most one rating per category.
-	public var safetyRatings: [SafetyRating]
+	public var safetyRatings: [SafetyRating]?
 
 	/// Output only. Citation information for model-generated candidate.
 	/// This field may be populated with recitation information for any text included in the content. These are passages that are "recited" from copyrighted material in the foundational LLM's training data.
-	public var citationMetadata: CitationMetadata
+	public var citationMetadata: CitationMetadata?
 
 	/// Output only. Token count for this candidate.
-	public var tokenCount: Int
+	public var tokenCount: Int? = nil
 
 	/// Output only. Attribution information for sources that contributed to a grounded answer.
 	/// This field is populated for `GenerateAnswer` calls.
-	public var groundingAttributions: [GroundingAttribution]
+	public var groundingAttributions: [GroundingAttribution]?
 
 	/// Output only. Grounding metadata for the candidate.
 	/// This field is populated for `GenerateContent` calls.
 	public var groundingMetadata: GroundingMetadata?
 
 	/// Output only. Average log probability score of the candidate.
-	public var avgLogprobs: Double
+	public var avgLogprobs: Double?
 
 	/// Output only. Log-likelihood scores for the response tokens and top tokens
-	public var logprobsResult: LogprobsResult
+	public var logprobsResult: LogprobsResult?
 
 	/// Output only. Metadata related to url context retrieval tool.
-	public var urlContextMetadata: UrlContextMetadata
+	public var urlContextMetadata: UrlContextMetadata?
 
 	/// Output only. Index of the candidate in the list of response candidates.
-	public var index: Int
+	public var index: Int?
 
 	/// Optional. Output only. Details the reason why the model stopped generating tokens. This is populated only when `finishReason` is set.
 	public var finishMessage: String?
@@ -45,15 +45,15 @@ public struct Candidate: Codable {
 	public init(
 		content: Content,
 		finishReason: FinishReason? = nil,
-		safetyRatings: [SafetyRating],
-		citationMetadata: CitationMetadata,
-		tokenCount: Int = 0,
-		groundingAttributions: [GroundingAttribution],
+		safetyRatings: [SafetyRating]? = nil,
+		citationMetadata: CitationMetadata? = nil,
+		tokenCount: Int? = nil,
+		groundingAttributions: [GroundingAttribution]? = nil,
 		groundingMetadata: GroundingMetadata? = nil,
-		avgLogprobs: Double = 0,
-		logprobsResult: LogprobsResult,
-		urlContextMetadata: UrlContextMetadata,
-		index: Int = 0,
+		avgLogprobs: Double? = nil,
+		logprobsResult: LogprobsResult? = nil,
+		urlContextMetadata: UrlContextMetadata? = nil,
+		index: Int? = nil,
 		finishMessage: String? = nil
 	) {
 		self.content = content

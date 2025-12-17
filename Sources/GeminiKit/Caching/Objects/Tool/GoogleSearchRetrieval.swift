@@ -2,9 +2,9 @@
 public struct GoogleSearchRetrieval: Codable {
 
 	/// Specifies the dynamic retrieval configuration for the given source.
-	public var dynamicRetrievalConfig: DynamicRetrievalConfig
+	public var dynamicRetrievalConfig: DynamicRetrievalConfig?
 	
-	public init(dynamicRetrievalConfig: DynamicRetrievalConfig) {
+	public init(dynamicRetrievalConfig: DynamicRetrievalConfig? = nil) {
 		self.dynamicRetrievalConfig = dynamicRetrievalConfig
 	}
 }
